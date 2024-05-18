@@ -1,0 +1,32 @@
+data_list = [(2013, 'Rush', 26.9, 'Ron Howard'), (2001, 'A Beautiful Mind', 171, 'Ron Howard'), (2008, 'Hunger', 154, 'Steve McQueen')]
+
+#**********Program**********
+
+def construct_movies_by_director(data_lst: list) -> dict :
+    if len(set(data_lst)) != len(data_lst):
+        raise ValueError("Duplicated data")
+    result = {}
+    for data in data_lst:
+        director = data[0]
+        if director not in result:
+            result[director] = []
+        content = result[director]
+        result[director] = content.append(tuple(data_lst[1:]))
+    return result
+
+def top_directors(movie_dic):
+    result = []
+    for key, value in movie_dic.items():
+        summation = sum([x[-1] for x in value)
+        result.append((key, summation))
+    return sorted(result, key=lambda x:x[1], reverse=True)
+
+#********** End **********
+
+if __name__ == '__main__':
+    try:
+        movie_dict = construct_movies_by_director(data_list)
+        sorted_list = top_directors(movie_dict)
+        print(sorted_list)
+    except Exception as e:
+        print(e)
