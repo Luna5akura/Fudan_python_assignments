@@ -41,12 +41,12 @@ def colorful_circle():
         turtle.begin_fill()
         if i % 2 ==1:
             turtle.end_fill()
-            turtle.penup()
+            # turtle.penup()
         turtle.right(360 / 7)
         turtle.circle(50)
         if i % 2 == 1:
             turtle.begin_fill()
-            turtle.pendown()
+            # turtle.pendown()
         turtle.end_fill()
     turtle.done()
 
